@@ -1,8 +1,9 @@
-FROM ubuntu:14.10
+FROM ubuntu:16.04
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
- && apt-get install -y squid3 python python-pip supervisor \
- && mv /etc/squid3/squid.conf /etc/squid3/squid.conf.dist \
+ && apt-get install -y squid3 python python-pip supervisor python-dev libffi-dev sudo \
  && rm -rf /var/lib/apt/lists/* # 20140928
 
 RUN pip install devpi
